@@ -1,0 +1,28 @@
+.imgHome
+{
+
+    object-fit: cover;
+    overflow: hidden;
+    height: 700px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.homeCont
+{
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+.contDetail
+{
+    margin-top: 50px;
+    font-size: larger;
+    text-align:left;
+}
+.firstP{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+p{
+    text-align: start;
+}

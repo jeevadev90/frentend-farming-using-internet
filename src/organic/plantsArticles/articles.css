@@ -1,0 +1,27 @@
+.Articles{
+    margin-top: 100px;
+}
+
+.articleImg
+{
+    height: 250px;
+    width: 400px;
+    overflow: hidden;
+    object-fit: cover;
+    margin-right: 20px;
+    
+}
+
+.articleCard
+{
+    
+    border: none;
+    border-bottom: 2px solid rgba(90, 90, 90, 0.459);
+    border-radius: 0%;
+    padding: 20px;
+    margin-top: 20px;
+}
+.articleBody
+{
+    padding-left: 30px;
+}

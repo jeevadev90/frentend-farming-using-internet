@@ -1,0 +1,26 @@
+.content{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.artCard
+{
+    border: none;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.cart_body
+{
+    border-top: 2px solid rgba(70, 67, 67, 0.627);
+    border-bottom: 2px solid rgba(70, 67, 67, 0.627);
+}
+.artCard p{
+color: rgba(4, 80, 38, 0.87);    
+font-style: oblique;
+font-size: small;
+font-weight: 700;
+}
