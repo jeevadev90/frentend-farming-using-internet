@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { isAuthenticated } from "../service/Auth";
 import { Navigate } from "react-router-dom";
 import Nav from "../nve/nav";
+import Footer from "../footer/footer";
 function Categories()
 {
 
@@ -60,7 +61,9 @@ function Categories()
                   </div></div>}
             </div>
         </div>
-        
+        <footer>
+            <Footer/>
+        </footer>
 
         </>
     );

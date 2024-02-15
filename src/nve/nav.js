@@ -52,10 +52,11 @@ function Nav()
           </Link>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><Link className="navLink dropdown-item" to="/categories">இயற்கை வேளாண்மை </Link></li>
-            <li><Link className="navLink dropdown-item " to=""> கால்நடைகள் </Link></li>
+            <li><Link className="navLink dropdown-item " to="/cattel"> கால்நடைகள் </Link></li>
           </ul>
         </li> 
-        <li><Link className="navLinkD me-4"  to="/userArticle">Create</Link></li>
+        {isAuthenticated()?<li><Link className="navLinkD me-4"  to="/userArticle">Create</Link></li>:null}
+        {isAuthenticated()?<li><Link className="navLinkD me-4" to="/alluserArticles">Articles</Link></li>:null}
         
         
         

@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { isAuthenticated } from "../../service/Auth";
 import { Navigate } from "react-router-dom";
 import Nav from "../../nve/nav";
+import Footer from "../../footer/footer";
 
 export default function DefaultArticles(props)
 {
@@ -51,7 +52,7 @@ export default function DefaultArticles(props)
                 <div className="col-xl-8 articleBody">
                 <div className="card-body" key={a.id}>
                     <h5 key={a.id} className="card-title">{a.title}</h5>
-                    {a.description?(<p  dangerouslySetInnerHTML={{__html:a.description}} className="card-text"/>):
+                    {a.description?(<p  dangerouslySetInnerHTML={{__html:a.description}} className="srt"/>):
 
                     (<div key={a.id}><div className="spinner-grow text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
@@ -70,7 +71,9 @@ export default function DefaultArticles(props)
             <span className="visually-hidden">Loading...</span>
           </div></p>}
             </div>
-                    
+                  <footer>
+                    <Footer/>
+                    </footer>  
         </>
     );
 }

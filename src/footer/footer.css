@@ -1,0 +1,28 @@
+.footer
+{
+    padding: 20px;
+    margin-top: 100px;
+    
+}
+
+.footer .row .col h5{
+    color: white;
+}
+h5,span{
+    color: white;
+}
+.feedback
+{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+.feedback input textarea
+{
+    border-radius: 5px;
+}
+.icon
+{
+    margin-left: 15px;
+    font-size: larger;
+}

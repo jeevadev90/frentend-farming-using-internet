@@ -12,7 +12,7 @@
     border: 1px solid green;
     padding: 40px;
     text-align: center;
-    font-size: 80px;
+    font-size: 50px;
     color: rgb(69, 146, 214);
     align-self: center;
     animation-name: profileBorder;
@@ -50,14 +50,15 @@
     border: none;
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    width: 500px;
+    width: 450px;
     margin-top: 10px;
+    padding-right: 10px;
     
 }
 .detailCard .col
 {
     
-    width: 200px;
+    width: 250px;
     text-align: left;
     
 }
@@ -66,8 +67,9 @@
     border: none;
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    width: 500px;
+    width: 450px;
     margin-top: 10px;
     margin-left: 50px;
+    margin-left: 10px;
     padding: 10px;
 }

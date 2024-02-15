@@ -102,12 +102,12 @@ export default function Register()
 
     return(
         <>  
-        <div className="register-block">
-             <div className="container registerContainer">
+        <div className=" register-block">
+             <div className="container-fluid registerContainer">
              <div className="row ">
                  <div className="col register-sec">
                      <h2 className="text-center">Register Now</h2>
-                     <form onSubmit={handleSubmit} className="register-form" action="" >
+                     <form onSubmit={handleSubmit} className="register-form " action="" >
                      <div className="form-group nav justify-content-start">
                          <label htmlFor="exampleInputFirstName" className="text-uppercase">FirstName</label>
          
@@ -161,7 +161,7 @@ export default function Register()
                          </div>
                          </div>):null}
          
-                         <input type="submit" className="btn btn-register float-right" disabled={loading}  value="Register"/>
+                         <input type="submit" className="btn btn-register float-end form-control" disabled={loading}  value="Register"/>
                      </div>
                      <div className="clearfix"></div>
                      <div className="form-group">

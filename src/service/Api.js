@@ -17,14 +17,23 @@ const GETCategories_url="/users/getCategories";
 
 export const registerApi=(inputs)=>
 {
+    // const token=getUserData()
     let data={firstName:inputs.firstName,lastName:inputs.lastName,name:inputs.username,email:inputs.email,password:inputs.password}
-    return axios.post(REGISTER_URL,data)
+    return axios.post(REGISTER_URL,data,{
+        headers:{
+            "Authorization":` `
+        }
+    })
 }
 
 export const loginApi=(inputs)=>
 {
     let data={email:inputs.email,password:inputs.password}
-    return axios.post(LOGIN_URL,data);
+    return axios.post(LOGIN_URL,data,{
+        headers:{
+            "Authorization":` `
+        }
+    });
 }
 
 export const profileApi=async()=>
@@ -45,20 +54,35 @@ export const categoriesApi=(name,image)=>
     
     return axios.post(CATEGORIES_URL,data);
 }
-export const getCategoriesApi=()=>{
-    return axios.get(GETCategories_url);
+export const getCategoriesApi=async()=>{
+    const token=await getUserData();
+    return axios.get(GETCategories_url,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        }
+    });
 }
 
-export const getArticlesApi=(id)=>
+export const getArticlesApi=async(id)=>
 {
+    const token=await getUserData();
     const GETARTICLESLIST_URL=`/users/particularCategories/${id}`
-    return axios.get(GETARTICLESLIST_URL);
+    return axios.get(GETARTICLESLIST_URL,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        }
+    });
 }
 
-export const getParticularArticleApi=(id)=>
+export const getParticularArticleApi=async(id)=>
 {
+    const token =await getUserData();
     const GETARTICLE_URL=`/users/getArticle/${id}`;
-    return axios.get(GETARTICLE_URL);
+    return axios.get(GETARTICLE_URL,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        }
+    });
 }
 export const writeArticle=async(texts)=>
 {
@@ -83,4 +107,76 @@ export const getUserArticle=async()=>
         },
     });
 
+}
+
+export const getAlluserArticle=async(page)=>
+{
+    const token =await getUserData();
+    const GETALLUSERARTICLE_URL="/users/getAlluserarticle";
+    return axios.get(GETALLUSERARTICLE_URL,{
+        params:{
+            page:page,
+            size:10
+        }, headers:{
+            "Authorization":`Bearer ${token}`
+        },
+    });
+}
+
+export const getParticularusrArt=async(id)=>
+{
+    const token =await getUserData();
+    const PARTICULARUSERARTICLE_URL=`/users/getParticularUserArticle/${id}`;
+    return axios.get(PARTICULARUSERARTICLE_URL,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        },
+    });
+}
+
+export const addFeedback=async(feedback)=>
+{
+    let data={content:feedback.content,email:feedback.email}
+    const token =await getUserData()
+    const ADDFEEDBACK_URL="/feedback/addfeedback"
+    return axios.post(ADDFEEDBACK_URL,data,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        },
+    })
+}
+
+export const fetchFeedback=async()=>
+{
+    let token=getUserData()
+    let FETCHFEEDBACK_URL="/feedback/fetchFeedback"
+    return axios.get(FETCHFEEDBACK_URL,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        },
+    })
+}
+
+export const addComments=(comment,id)=>
+{
+    let data={comment:comment,id:id}
+    let token=getUserData();
+    let ADDCOMMENT_URL="/comments/addcomment"
+    return axios.post(ADDCOMMENT_URL,data,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        },
+    })
+}
+
+export const getComment=(id)=>
+{
+    let data={id:id}
+    let token=getUserData();
+    let GETCOMMENT_URL="/comments/getcomment"
+    return axios.get(GETCOMMENT_URL,data,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        },
+    })
 }

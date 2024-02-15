@@ -15,6 +15,9 @@ import DefaultArticles from './organic/plantsArticles/articles';
 import ShowArticle from './organic/showArticles/ShowArticles';
 import UserArticles from './organic/plantsArticles/userArticle/userArticle';
 import ShowUserAtricles from './organic/showArticles/showuserArticle';
+import AlluserArticle from './organic/alluserArticles/AlluserArticle';
+import ShowParticularArt from './organic/showArticles/ShowParticularArticle';
+import Cattel from './cattele_farming/cattle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -36,6 +39,9 @@ root.render(
       <Route path='/showArticle/:id' element={<ShowArticle/>} />
       <Route path='/userArticle' element={<UserArticles/>} />
       <Route path='/showUserArticles' element={<ShowUserAtricles/>} />
+      <Route path='/alluserArticles' element={<AlluserArticle/>} />
+      <Route path='/showParticularArt/:id' element={<ShowParticularArt/>} />
+      <Route path='/cattel' element={<Cattel/>} />
       
     </Routes>
   </BrowserRouter></>

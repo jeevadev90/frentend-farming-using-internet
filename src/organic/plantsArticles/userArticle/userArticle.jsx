@@ -5,6 +5,7 @@ import JoditEditor from 'jodit-react';
 import { writeArticle } from '../../../service/Api';
 import { Navigate } from 'react-router-dom';
 import Nav from "../../../nve/nav";
+import Footer from "../../../footer/footer";
 export default function UserArticles()
 {
 
@@ -61,7 +62,9 @@ export default function UserArticles()
             
         </div>
         {/* <button onClick={handleOnclick}>submit</button> */}
-        
+        <footer>
+            <Footer/>
+        </footer>
         </>
     );
 }

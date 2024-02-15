@@ -8,12 +8,28 @@ import fifth from "./img/slid/slid5.jpg"
 import sixth from "./img/slid/slid6.jpg"
 import seven from "./img/slid/slid7.jpg"
 import Nav from "../nve/nav";
+import Footer from "../footer/footer";
+import { useEffect, useState } from "react";
+import { fetchFeedback } from "../service/Api";
 
 
 function Home()
 {
+  const [feedback,setFeedback]=useState()
 
-    
+    useEffect(()=>
+    {
+
+      fetchFeedback().then((response)=>
+      {
+        console.log(response)
+        setFeedback(response.data)
+      }).catch((error)=>
+      {
+        console.log(error)
+        
+      })
+    },[])
 
     return(
         <>
@@ -21,50 +37,54 @@ function Home()
         <div className="homeCont container-fluid">
         
         
-        
-        <div id="carouselExampleControls" className="imgHome carousel slide" data-bs-ride="carousel">
+        <div className="row">
+           <div id="carouselExampleControls" className="imgHome carousel slide" data-bs-ride="carousel">
        
-  <div className="carousel-inner">
-   
-  <div  class="carousel-item active">
-      <img src={myImg} class="d-block w-100" alt="..."/>
-    </div>
-    
-    <div class="carousel-item">
-      <img src={first} class="d-block w-100" alt="..."/>
-    </div>
-    <div class="carousel-item">
-      <img src={second} class="d-block w-100" alt="..."/>
-    </div>
-    <div class="carousel-item">
-      <img src={third} class="d-block w-100" alt="..."/>
-    </div>
-    <div class="carousel-item">
-      <img src={fourth} class="d-block w-100" alt="..."/>
-    </div>
-    <div class="carousel-item">
-      <img src={fifth} class="d-block w-100" alt="..."/>
-    </div>
-    <div class="carousel-item">
-      <img src={sixth} class="d-block w-100" alt="..."/>
-    </div>
-    <div class="carousel-item">
-      <img src={seven} class="d-block w-100" alt="..."/>
-    </div>  
-    
-  </div>
-  
-  <button  className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span className="visually-hidden">Previous</span>
-  </button>
-  <button  className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-    <span className="visually-hidden">Next</span>
-  </button>
-</div></div>
+            <div className="carousel-inner">
+            
+            <div  className="carousel-item active">
+                <img src={myImg} className="d-block w-100" alt="..."/>
+              </div>
+              
+              <div className="carousel-item">
+                <img src={first} className="d-block w-100" alt="..."/>
+              </div>
+              <div className="carousel-item">
+                <img src={second} className="d-block w-100" alt="..."/>
+              </div>
+              <div className="carousel-item">
+                <img src={third} className="d-block w-100" alt="..."/>
+              </div>
+              <div className="carousel-item">
+                <img src={fourth} className="d-block w-100" alt="..."/>
+              </div>
+              <div className="carousel-item">
+                <img src={fifth} className="d-block w-100" alt="..."/>
+              </div>
+              <div className="carousel-item">
+                <img src={sixth} className="d-block w-100" alt="..."/>
+              </div>
+              <div className="carousel-item">
+                <img src={seven} className="d-block w-100" alt="..."/>
+              </div>  
+              
+            </div>
+            
+            <button  className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button  className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
+        </div>
+      </div>
+      </div>
         <b> <hr></hr></b>
         <div className="contDetail container">
+          <div className="row">
+            <div className="col">
         <p>
             <h2 style={{color:"green"}}><u>இயற்கை வேளாண்மை</u></h2>
             <br/>
@@ -124,8 +144,36 @@ function Home()
               </ul>
            </p>
         </p>
+        </div>
+       
+        </div>
      </div>
-        
+     <div className="row">
+     <div className="col feedBack">
+          <h3>Feed backs</h3>
+          {feedback&&feedback.length>0?feedback.map((feed)=>(
+            <>
+            <div className="card " key={feed.id}>
+            <div className="card-body">
+              <p>{feed.content}</p>
+              <div className="card-text">
+                <div className="row">
+                  <div className="col">
+                    <p> {feed.user.name}<sub><p>{feed.created_At}</p></sub></p>
+                  </div>
+                  <div className="col"></div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+            </>
+          )):<div></div>}
+        </div>
+     </div>
+        <footer>
+          <Footer/>
+        </footer>
     </>
   );
 }

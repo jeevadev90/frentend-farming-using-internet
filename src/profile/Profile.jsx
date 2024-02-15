@@ -4,6 +4,7 @@ import { profileApi } from "../service/Api";
 import { isAuthenticated, logout } from "../service/Auth";
 import { Navigate,Link, useNavigate } from "react-router-dom";
 import Nav from "../nve/nav";
+import Footer from "../footer/footer";
 
 export default function Profile()
 {
@@ -53,46 +54,43 @@ export default function Profile()
     return(
         <>
         <Nav></Nav>
-        <div className="container-fluid profileCont">
+        <div className="container profileCont">
                <div className="row align-content-start">
                 
-                    <div className="col-3 ">
-                    <i className="profile-image fa-solid fa-user"></i>
-                        
-                    </div>
+                    
                     
         
-                <div className="col-4">
+                <div className="col-9 col-sm-4 col-md-7 col-lg-6">
                     <div className="card detailCard align-items-center">
                         <div className="card-title">  <h1 className="username">{details.name}</h1></div>
                     <div className="card-body ">
                         <div className="card-text ">
                             <div className="row con">
-                                <div className="col">
+                                <div className="col-5">
                                 FirstName: </div>
                                 <div className="col">{details.firstName}</div>
                                     
                           </div>
                           <div className="row  con ">
-                          <div className="col"> LastName: </div>
+                          <div className="col-5"> LastName: </div>
                                 <div className="col">{details.lastName}</div>
                          </div>
                                 
                             
                           </div>
                           <div className="row con">
-                          <div className="col"> Email: </div>
-                                <div className="col">{details.email}</div>
+                          <div className="col-4"> Email: </div>
+                                <div className="col-8">{details.email}</div>
 
                           </div>
                           <div className="card-link">
-                          <button type="click" className="btn btn-danger" onClick={logoutUser}>LOGOUT</button>
+                          <button type="click" className="btn btn-danger" onClick={logoutUser}>LOG OUT</button>
                           </div>
                         </div>
                     </div>
                 </div>
                 
-                
+                <div className="col-9 col-md-6">
                 <div className="card detailCard2">
                         <div className="card-title">  <h1 className="username">YOUR ARTICLES</h1></div>
                         <hr/>
@@ -104,8 +102,11 @@ export default function Profile()
                 </div>
                 </div>
                 </div>
+                </div>
             
-         
+         <footer>
+            <Footer/>
+         </footer>
         </>
     );
 }

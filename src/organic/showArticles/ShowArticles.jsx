@@ -4,6 +4,7 @@ import { getParticularArticleApi } from "../../service/Api";
 import "./showArticles.css";
 import { isAuthenticated } from "../../service/Auth";
 import Nav from "../../nve/nav";
+import Footer from "../../footer/footer";
 
 export default function ShowArticle(props)
 {
@@ -49,12 +50,15 @@ export default function ShowArticle(props)
             </div>
             <div className="row">
                 {article.content?(
-                    <p dangerouslySetInnerHTML={{__html:article.content}}></p>
+                    <p  dangerouslySetInnerHTML={{__html:article.content}}></p>
                 ):(<div class="spinner-grow text-primary" role="status">
                 <span class="visually-hidden">Loading...</span>
               </div>)}
             </div>
         </div>
+        <footer>
+            <Footer/>
+        </footer>
         </>
     );
 }

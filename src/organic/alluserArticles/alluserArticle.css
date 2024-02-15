@@ -1,0 +1,35 @@
+.a-cont
+{
+    margin-top: 100px;
+}
+.show_art
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.art-card
+{
+    margin-bottom: 20px;
+    padding: 5px;
+    border: none;
+        
+}
+
+.a-cont button
+{
+    margin-left: 10px;
+    width: 80px;
+}
+.art-card .card-body
+{
+    border-top: 2px solid rgba(0, 0, 0, 0.493);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.492);
+}
+.art-card p{
+    font-size: small;
+    color: rgb(4, 98, 37);
+}

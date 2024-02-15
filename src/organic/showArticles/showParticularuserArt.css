@@ -1,0 +1,52 @@
+.use-art
+{
+    margin-top: 100px;
+}
+.use-art .card
+{
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+}
+.use-art .card-body
+{
+    border-top: 2px solid rgba(0, 0, 0, 0.553);
+}
+.comment
+{
+    padding: 20px;
+    border-top: 2px solid black;
+    margin-top: 30px;
+    
+}
+.comment .row .col textarea
+{
+    width: 50%;
+    height: 80%;
+}
+
+.u-comment
+{
+    border-top: 3px solid rgb(148, 146, 146);
+    overflow-y: scroll;
+    height: 700px;
+    margin-top: 50px;
+    padding: 20px;
+}
+.us-com i{
+    border-radius: 50%;
+    border: 1px solid rgba(0, 128, 255, 0.855);
+    margin-right: 5px;
+    font-size: smaller;
+    padding: 5px;
+    
+}
+.us-com{
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.us-com .c-com{
+    padding-left: 20px;
+    color: black;
+}
