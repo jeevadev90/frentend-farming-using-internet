@@ -56,9 +56,9 @@ export default function Footer()
                     <span><i class="fa-brands fa-google icon"></i></span>
                 </div>
                 <div className="col">
-                    <form onSubmit={feedBack} className="bg-light feedback" action="">
+                    <form  onSubmit={feedBack} className="bg-light feedback form-group" action="">
                         <h4>Feed Back</h4><br />
-                        <textarea name="content" id="" cols="50" rows="5" onChange={onchangeHndler}></textarea>
+                        <textarea className="form-control" name="content" id="" cols="50" rows="5" onChange={onchangeHndler}></textarea>
                         <br />
                       <input type="text" placeholder="Email" name="email" onChange={onchangeHndler} />  
                       <br />
