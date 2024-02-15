@@ -34,10 +34,11 @@ function Home()
     return(
         <>
           <Nav></Nav>
-        <div className="homeCont container-fluid">
+        <div className="homeCont container">
         
         
         <div className="row">
+          <div className="col">
            <div id="carouselExampleControls" className="imgHome carousel slide" data-bs-ride="carousel">
        
             <div className="carousel-inner">
@@ -70,14 +71,15 @@ function Home()
               
             </div>
             
-            <button  className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <button  className="carousel-control-prev btn" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
               <span className="carousel-control-prev-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Previous</span>
             </button>
-            <button  className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <button  className="carousel-control-next btn" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
               <span className="carousel-control-next-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Next</span>
             </button>
+        </div>
         </div>
       </div>
       </div>

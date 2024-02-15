@@ -3,7 +3,7 @@
 
     object-fit: cover;
     overflow: hidden;
-    height: 700px;
+    height: auto;
     width: 100%;
     border-radius: 20px;
 }
