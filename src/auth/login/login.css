@@ -1,7 +1,6 @@
 .login-block{
-    float:left;
     width:100%;
-    padding : 50px 0;
+   
     
 
 }
@@ -19,4 +18,18 @@
 .btn-regNv
 {
     color: #fff;
+}
+
+@media (max-width:575.98px)
+{
+    .logCont{
+        width: 80%;
+    }
+}
+@media (max-width:991.98px)
+{
+    .logCont
+    {
+        width: 80%;
+    }
 }
