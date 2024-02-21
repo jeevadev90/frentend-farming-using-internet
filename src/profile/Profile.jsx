@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react";
 import "./profile.css";
-import { profileApi } from "../service/Api";
+import { profileApi, putImage } from "../service/Api";
 import { isAuthenticated, logout } from "../service/Auth";
 import { Navigate,Link, useNavigate } from "react-router-dom";
 import Nav from "../nve/nav";
@@ -8,6 +8,12 @@ import Footer from "../footer/footer";
 
 export default function Profile()
 {
+    
+    const [isVisible, setIsVisible] = useState(false);
+
+    const toggleVisibility = () => {
+      setIsVisible(!isVisible);
+    };
     const navigate=useNavigate();
     const [details,setDetails]=useState(
         {
@@ -15,21 +21,41 @@ export default function Profile()
             lastName:"",
             name:"",
             email:"",
-            acrticleCount:null
+            acrticleCount:null,
+            image:null
         })
-    useEffect(()=>
+    const[pimage,setPimage]=useState(null) 
+    
+    
+   
+    const handleImage=(event)=>
     {
+        setPimage(event.target.files[0])
+    }
 
-
-        profileApi().then((response)=>
+    const handleCliK=(envent)=>
+    {
+        putImage(pimage).then((response)=>
         {
             console.log(response)
+        }).catch((error)=>
+        {
+            console.log(error)
+        })
+    }
+
+    useEffect(()=>
+    {
+        profileApi().then((response)=>
+        {
+            
             setDetails({
                 firstName:response.data.data.firstName,
                 lastName:response.data.data.lastName,
                 name:response.data.data.name,
                 email:response.data.data.email,
-                acrticleCount:response.data.data.acrticleCount
+                acrticleCount:response.data.data.acrticleCount,
+                image:response.data.data.image
             })
         }).catch((error)=>
         {
@@ -55,6 +81,33 @@ export default function Profile()
         <>
         <Nav></Nav>
         <div className="container profileCont">
+            <div className="row">
+                <div className="col d-flex align-items-center justify-content-center " >
+                       
+                    <div className="justify-content-between">
+                        {details.image&&details.image.length>0?(<img className="profile-imgs fa-solid" src={`data:images/jpg;base64,${details.image}`} alt="img"/>): <i className="profile-imgs fa-solid fa-user"></i>}
+                       
+                    </div>
+
+                    <div className="row justify-content-start">
+                       
+                    </div>
+                   
+                </div>
+            </div>
+            <div className="row justify-content-start">
+              <div className="col ">
+                    <button className="btn btn-success" onClick={toggleVisibility}>Edit</button>
+                    <form onSubmit={handleCliK} encType="multipart/form-data">
+                    {isVisible && (
+                        <div className="edit">
+                        <input  type="file" onChange={handleImage}  />
+                        <button className="btn btn-success"  type="submit" >Sumbit</button>
+                        </div>
+                    )}
+                    </form>
+                    </div>
+                    </div>
                <div className="row align-content-start">
                 
                     

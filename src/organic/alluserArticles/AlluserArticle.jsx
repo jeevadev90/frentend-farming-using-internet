@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { getAlluserArticle } from "../../service/Api";
 import Nav from "../../nve/nav";
 import "./alluserArticle.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Footer from "../../footer/footer";
+import { isAuthenticated } from "../../service/Auth";
 
 export default function AlluserArticle()
 {
@@ -15,13 +16,18 @@ export default function AlluserArticle()
     useEffect(()=>{
         getAlluserArticle(page).then(response=>
             {
-                console.log(response);
+                
                 setData(response.data.data.content)
             }).catch(error=>
                 {
                     console.log(error);
                 })
     },[page])
+    if(!isAuthenticated())
+    {
+        return <Navigate to="/" />
+    }
+
 
     return(
         <>

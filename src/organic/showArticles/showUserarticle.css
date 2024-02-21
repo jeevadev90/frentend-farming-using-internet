@@ -5,6 +5,7 @@
     -webkit-line-clamp: 3;
     line-clamp: 3;
     -webkit-box-orient: vertical;
+    
 }
 .artCard
 {
@@ -12,6 +13,7 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 10px;
 }
 .cart_body
 {

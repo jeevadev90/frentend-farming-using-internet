@@ -1,19 +1,31 @@
 import { useEffect, useState } from "react";
-import { getUserArticle } from "../../service/Api";
+import { deleteArticle, getUserArticle } from "../../service/Api";
 import "./showUserarticle.css";
 import Nav from "../../nve/nav";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Footer from "../../footer/footer";
+import { isAuthenticated } from "../../service/Auth";
 
 export default function ShowUserAtricles()
 {
     const [articles,setArticle]=useState()
 
+    const handleOnclick=(e,id)=>
+    {
+      
+        deleteArticle(id).then((response)=>
+        {
+            console.log(response)
+        }).catch((error)=>
+        {
+            console.log(error)
+        })
+    }
+
     useEffect(()=>
     {
         getUserArticle().then((response)=>
         {
-            console.log(response)
             setArticle(response.data.data)
         }).catch((error)=>
         {
@@ -22,6 +34,10 @@ export default function ShowUserAtricles()
 
     },[])
 
+    if(!isAuthenticated())
+    {
+        return <Navigate to="/" />
+    }
 
 
     return(
@@ -31,12 +47,15 @@ export default function ShowUserAtricles()
            {articles&&articles.length>0? articles.map(art=>(
             <><div className="card artCard"><p>Creater: {art.user.name}</p> <div className="card-body cart_body" key={art.id}>
                 {art.article?(
-                    <> <p className="content" dangerouslySetInnerHTML={{__html:art.article}}>
+                    <> <p className="content " dangerouslySetInnerHTML={{__html:art.article}}>
                     </p>
                     <Link to={`/showParticularArt/${art.id}`}>Read more..</Link>
+                    <form onSubmit={(e)=>{handleOnclick(e,art.id)}}>
+                    <button type="submit" className="btn btn-danger" >Delete</button> 
+                    </form>
                     </>
-                ):(<div class="spinner-grow text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
+                ):(<div className="spinner-grow text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
               </div>)}
             </div><p>Created_At: {art.created_At}</p></div>
             </>

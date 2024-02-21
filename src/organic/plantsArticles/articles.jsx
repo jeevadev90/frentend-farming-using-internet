@@ -19,7 +19,7 @@ export default function DefaultArticles(props)
         
         getArticlesApi(id).then((response)=>
         {
-            console.log(response);
+           
             setArticles(response.data.data);
            
         }).catch((error)=>

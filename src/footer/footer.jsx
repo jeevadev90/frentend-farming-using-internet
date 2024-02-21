@@ -25,7 +25,7 @@ export default function Footer()
         event.preventDefault();
         addFeedback(feedback).then((response)=>
         {
-            console.log(response)
+            
         }).catch((error)=>
         {
             console.log(error)
@@ -52,8 +52,8 @@ export default function Footer()
                     <span><i className="fa-brands fa-instagram icon"></i></span>
                     <span><i className="fa-brands fa-linkedin icon"></i></span>
                     <span><i className="fa-brands fa-github icon"></i></span>
-                    <span><i class="fa-brands fa-facebook icon"></i></span>
-                    <span><i class="fa-brands fa-google icon"></i></span>
+                    <span><i className="fa-brands fa-facebook icon"></i></span>
+                    <span><i className="fa-brands fa-google icon"></i></span>
                 </div>
                 <div className="col">
                     <form  onSubmit={feedBack} className="bg-light feedback form-group" action="">

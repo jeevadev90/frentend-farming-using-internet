@@ -72,7 +72,7 @@ function Nav()
           <li><Link className="navLinkD " to="/register">Register</Link></li>
         </ul></>:null }
         {isAuthenticated()?<>
-        <li className=" "><Link className="navLinkD" to="/profile"><i className="userImg fa-solid fa-user"></i></Link></li>
+        <li className=" "><Link className="navLinkD" to="/profile">Account</Link></li>
         </> :null} 
       
       

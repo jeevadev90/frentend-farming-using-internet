@@ -79,9 +79,9 @@ export default function Register()
                 const err=error.response.data.error;
                 if(err!==null)
                 {
-                    setErrors({...errors,custom_error:"Username or Email Already registered"})
+                    setErrors({...errors,custom_error:err[0].message})
                 }
-
+                
                 
 
             }).finally(()=>{

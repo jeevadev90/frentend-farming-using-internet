@@ -22,7 +22,7 @@ function Home()
 
       fetchFeedback().then((response)=>
       {
-        console.log(response)
+        
         setFeedback(response.data)
       }).catch((error)=>
       {

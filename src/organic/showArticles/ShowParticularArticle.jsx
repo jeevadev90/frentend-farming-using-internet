@@ -11,7 +11,8 @@ export default function ShowParticularArt(props)
         {
             user:null,
             article:'',
-            created_at:""
+            created_at:"",
+           
         }
     )
     
@@ -23,11 +24,11 @@ export default function ShowParticularArt(props)
     }
     const Handlesubmit=(event)=>
     {
-        event.preventDefault();
+        
         addComments(comment,id).then((response)=>
         {
-            console.log(response)
-        }).then((error)=>
+            
+        }).catch((error)=>
         {
             console.log(error)
         }).finally(()=>
@@ -40,11 +41,11 @@ export default function ShowParticularArt(props)
     {
         getParticularusrArt(id).then((response)=>
         {
-            console.log(response);
+            
             setContent({
               article:response.data.data.article,
               user:response.data.data.user.name,
-              created_at:response.data.data.created_At
+              created_at:response.data.data.created_At,
             });
             setGetcomments(response.data.data1)
         }).catch((error)=>
@@ -66,7 +67,7 @@ export default function ShowParticularArt(props)
                 <div className="col">
                     <div className="card">
                         <div className="card-title d-flex justify-content-between">
-                            <p>{content.user}</p><p>{content.created_at}</p>
+                            <p>{content.user}</p><p>{content.created_at}</p> 
                         </div>
                         <div className="card-body">
                             <div className="card-text">
@@ -77,14 +78,14 @@ export default function ShowParticularArt(props)
                </div>
              
                <div className="row">
-                    <div className="col">
-                        <form className="comment" onSubmit={Handlesubmit}>
+                    <div className="col u-com">
+                        <form className="comment">
                             <div className="row">
                                 <div className="col">
                                     <h3>Comments</h3>
                                     <textarea  type="text" value={comment} onChange={changeHandler}></textarea>
                                     <div className=""></div>
-                                    <input className="btn btn-success" type="submit" value="submit" />
+                                    <button onClick={Handlesubmit} className="btn btn-success" type="submit">submit</button> 
                                 </div>
 
                             </div>
@@ -98,7 +99,9 @@ export default function ShowParticularArt(props)
                                 <>
                                 <div className="s-com" key={index}>
                                     <div className="us-com text-primary">
-                                        <p><i className=" fa-solid fa-user"></i>{g.user.name}<sub className="text-secondary">{g.created_At}</sub></p>
+                                        <p>
+                                            {g.user.image&&g.user.image.length>0?(<img className="fa" src={`data:images/jpg;base64,${g.user.image}`} alt="imgs"/>):<i className=" fa-solid fa-user"></i>}
+                                            {g.user.name}<sub className="text-secondary">{g.created_At}</sub></p>
                                         <p className="c-com">{g.comment}</p>
                                     </div>
                                 

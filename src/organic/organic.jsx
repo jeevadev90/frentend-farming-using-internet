@@ -14,7 +14,7 @@ function Categories()
     useEffect(()=>
     {
         getCategoriesApi().then((response)=>{
-            console.log(response);
+           
 
             setImage(response.data.data)
 

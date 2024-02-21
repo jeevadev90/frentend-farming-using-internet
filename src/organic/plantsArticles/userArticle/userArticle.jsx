@@ -13,6 +13,7 @@ export default function UserArticles()
     const textRef=useRef(null);
     
     const [texts, setText] = useState("");
+    const [errors,setErrors]=useState(null)
     const handleInputs=(event)=>
     {
 
@@ -27,14 +28,20 @@ export default function UserArticles()
         event.preventDefault();
         writeArticle(texts).then((response)=>
         {
-            console.log(response)
+            
            
         }).catch((error)=>
         {
             console.log(error);
+            let err=error.response.data.error[0].message
+            if(err!==null)
+            {
+            setErrors(err)
+            }
         }).finally(()=>
         {
-            setText("")
+            setText(" ")
+           
            
         })
     }
@@ -55,8 +62,10 @@ export default function UserArticles()
             </div>
             <div className="row">
             <form onSubmit={handleOnclick} >
-            <JoditEditor   ref={textRef}  onChange={handleInputs}/>
-            <input type="submit"  value="submit" />
+            <JoditEditor value={texts}   ref={textRef}  onChange={handleInputs}/>
+
+            <input type="submit" value="submit" />
+            {errors?(<span className="text-danger"><p>{errors}</p></span> ):null}
             </form>
             </div>
             

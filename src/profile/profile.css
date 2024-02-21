@@ -4,7 +4,7 @@
     
     text-align: center;
 }
-.profile-image
+/* .profile-image
 {
     height: 150px;
     width: 150px;
@@ -26,7 +26,7 @@
   25%  {border: 1px solid rgb(255, 0, 0);}
   50%  {border: 1px solid rgb(16, 61, 222);}
   100% {border: 1px solid rgb(220, 14, 189);}
-}
+} */
 .username
 {
     font-weight: 600;
@@ -71,5 +71,36 @@
     margin-top: 10px;
     margin-left: 50px;
     margin-left: 10px;
+    padding: 10px;
+}
+
+.profile-imgs
+{
+    border: 1px solid rgb(126, 120, 120);
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    padding: 5px;
+    font-size: 120px;
+    color: rgb(106, 104, 104);
+    margin-bottom: 20px;
+   overflow: hidden;
+    object-fit:cover;
+}
+/* .p-i 
+{
+    width: 100%;
+    text-align: center;
+    padding-left: 40%;
+    margin-bottom: 20px;
+} */
+.select
+{
+    border: none;
+}
+.edit
+{
+ 
+    border-radius: 5px;
     padding: 10px;
 }

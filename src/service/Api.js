@@ -8,7 +8,7 @@ axios.defaults.baseURL="http://localhost:8080";
 const REGISTER_URL="/registers/userRegister";
 const LOGIN_URL="/registers/userLogin";
 const PROFILE_URL="/users/userProfile";
-const CATEGORIES_URL="/admin/addCategories";
+
 const GETCategories_url="/users/getCategories";
 
 
@@ -47,12 +47,19 @@ export const profileApi=async()=>
     });
 }
 
-export const categoriesApi=(name,image)=>
+export const categoriesApi=async(name,image)=>
 {
-    let data={image:image,name:name}
-    
-    
-    return axios.post(CATEGORIES_URL,data);
+    const formData=new FormData();
+    formData.append("image",image)
+    formData.append("name",name)
+    const token=await getUserData();
+    let CATEGORIES_URL="/admin/addCategories";
+    return axios.post(CATEGORIES_URL,formData,{
+        headers:{
+            "Authorization":`Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+        }
+    });
 }
 export const getCategoriesApi=async()=>{
     const token=await getUserData();
@@ -148,7 +155,7 @@ export const addFeedback=async(feedback)=>
 
 export const fetchFeedback=async()=>
 {
-    let token=getUserData()
+    let token=await getUserData()
     let FETCHFEEDBACK_URL="/feedback/fetchFeedback"
     return axios.get(FETCHFEEDBACK_URL,{
         headers:{
@@ -157,10 +164,10 @@ export const fetchFeedback=async()=>
     })
 }
 
-export const addComments=(comment,id)=>
+export const addComments=async(comment,id)=>
 {
     let data={comment:comment,id:id}
-    let token=getUserData();
+    let token=await getUserData();
     let ADDCOMMENT_URL="/comments/addcomment"
     return axios.post(ADDCOMMENT_URL,data,{
         headers:{
@@ -169,12 +176,66 @@ export const addComments=(comment,id)=>
     })
 }
 
-export const getComment=(id)=>
+export const getComment=async(id)=>
 {
     let data={id:id}
-    let token=getUserData();
+    let token=await getUserData();
     let GETCOMMENT_URL="/comments/getcomment"
     return axios.get(GETCOMMENT_URL,data,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        },
+    })
+}
+
+export const getAdmin=async()=>
+{
+    let token=await getUserData();
+    let GETADMIN_URL="/admin/home";
+    return axios.get(GETADMIN_URL,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        },
+    })
+}
+
+export const addArticle=async(content,description,aimage,cont)=>
+{
+    let ADDARTICLE_URL="/admin/addArticles"
+    let token=await getUserData();
+    let formData=new FormData();
+    
+    formData.append("images",aimage)
+    formData.append("title",content.title)
+    formData.append("description",description)
+    formData.append("content",cont)
+    formData.append("name",content.categories)
+    return axios.post(ADDARTICLE_URL,formData,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        },
+    })
+}
+
+export const putImage=async(pimage)=>
+{
+    let PUTIMAGE_URL="/users/upadateimage"
+    let token=await getUserData();
+    let formData=new FormData();
+
+    formData.append("image",pimage)
+    return axios.put(PUTIMAGE_URL,formData,{
+        headers:{
+            "Authorization":`Bearer ${token}`
+        },
+    })
+}
+
+export const deleteArticle=async(id)=>
+{
+    let DELETEARTICLE_URL=`/users/deleteArticle/${id}`
+    let token=await getUserData()
+    return axios.delete(DELETEARTICLE_URL,{
         headers:{
             "Authorization":`Bearer ${token}`
         },

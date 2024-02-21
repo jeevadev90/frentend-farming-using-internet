@@ -23,7 +23,7 @@ export default function ShowArticle(props)
 
         getParticularArticleApi(id).then((response)=>
         {
-            console.log(response);
+            
             setArticle({
                 title:response.data.data.title,
                 image:response.data.data.image,
