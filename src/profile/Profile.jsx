@@ -62,7 +62,7 @@ export default function Profile()
     },[])    
     const handleCliK=async(event)=>
     {
-        event.preventDefault();
+        
         putImage(pimage).then((response)=>
         {
             console.log(response)
