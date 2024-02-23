@@ -12,7 +12,7 @@ export default function ShowUserAtricles()
 
     function handleOnclick(e,id)
     {
-        e.preventDefault();
+        
         deleteArticle(id).then((response)=>
         {
             
