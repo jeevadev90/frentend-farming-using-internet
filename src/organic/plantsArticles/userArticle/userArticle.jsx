@@ -16,7 +16,7 @@ export default function UserArticles()
     const [errors,setErrors]=useState(null)
     function handleInputs(event)
     {
-        event.preventDefault()
+       
         setText(event)   
     }
    
