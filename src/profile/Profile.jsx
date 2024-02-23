@@ -10,6 +10,7 @@ export default function Profile()
 {
     
     const [isVisible, setIsVisible] = useState(false);
+    const [visible,setVisible]= useState(false)
 
     const toggleVisibility = () => {
       setIsVisible(!isVisible);
@@ -28,28 +29,19 @@ export default function Profile()
     
     
    
-    const handleImage=(event)=>
+    const handleImage=async(event)=>
     {
         event.preventDefault();
         setPimage(event.target.files[0])
     }
 
-    const handleCliK=(envent)=>
-    {
-        putImage(pimage).then((response)=>
-        {
-            console.log(response)
-        }).catch((error)=>
-        {
-            console.log(error)
-        })
-    }
+    
 
     useEffect(()=>
     {
         profileApi().then((response)=>
         {
-            
+            console.log(response)
             setDetails({
                 firstName:response.data.data.firstName,
                 lastName:response.data.data.lastName,
@@ -58,14 +50,35 @@ export default function Profile()
                 acrticleCount:response.data.data.acrticleCount,
                 image:response.data.data.image
             })
+            if(response.data.data.role==="ADMIN")
+            {
+                setVisible(true)
+            }
         }).catch((error)=>
         {
             console.log(error);
         })
 
     },[])    
+    const handleCliK=async(event)=>
+    {
+        event.preventDefault();
+        putImage(pimage).then((response)=>
+        {
+            console.log(response)
+            // setDetails({
+            //     image:response.data
+            // })
+        }).catch((error)=>
+        {
+            console.log(error)
+        }).finally(()=>
+        {
+            setIsVisible(false)
+        })
+    }
 
-    const logoutUser=()=>
+    function logoutUser()
     {
         logout();
         
@@ -139,6 +152,10 @@ export default function Profile()
                           </div>
                           <div className="card-link">
                           <button type="click" className="btn btn-danger" onClick={logoutUser}>LOG OUT</button>
+                          </div>
+                          <div className="card-link">
+                            {visible?(<Link type="click" className="btn btn-secondary" to={"/admin"}>ADMIN PAGE</Link>):null}
+                          
                           </div>
                         </div>
                     </div>

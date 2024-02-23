@@ -10,7 +10,7 @@ export default function Footer()
             email:""
         }
     )
-    const onchangeHndler=(event)=>
+    function onchangeHndler(event)
     {
         setFeedback({
         ...feedback,[event.target.name]:event.target.value
@@ -31,7 +31,7 @@ export default function Footer()
             console.log(error)
         }).finally(()=>
         {
-            
+            setFeedback("")
         })
     }
 
@@ -58,9 +58,9 @@ export default function Footer()
                 <div className="col">
                     <form  onSubmit={feedBack} className="bg-light feedback form-group" action="">
                         <h4>Feed Back</h4><br />
-                        <textarea className="form-control" name="content" id="" cols="50" rows="5" onChange={onchangeHndler}></textarea>
+                        <textarea className="form-control" name="content" id="" value={feedback.content} cols="50" rows="5" onChange={onchangeHndler}></textarea>
                         <br />
-                      <input type="text" placeholder="Email" name="email" onChange={onchangeHndler} />  
+                      <input type="text" placeholder="Email" name="email" value={feedback.email} onChange={onchangeHndler} />  
                       <br />
                       <input className="btn btn-success" type="submit" value="submit" />
                     </form>

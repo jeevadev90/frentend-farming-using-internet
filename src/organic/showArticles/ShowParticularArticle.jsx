@@ -18,13 +18,13 @@ export default function ShowParticularArt(props)
     
     const [getComment,setGetcomments]=useState()
     const [comment,setComment]=useState()
-    const changeHandler=(event)=>
+    function changeHandler(event)
     {
         setComment(event.target.value);
     }
-    const Handlesubmit=(event)=>
+    function Handlesubmit(event)
     {
-        
+        event.preventDefault()
         addComments(comment,id).then((response)=>
         {
             

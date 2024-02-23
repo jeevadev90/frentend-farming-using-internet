@@ -10,12 +10,12 @@ export default function ShowUserAtricles()
 {
     const [articles,setArticle]=useState()
 
-    const handleOnclick=(e,id)=>
+    function handleOnclick(e,id)
     {
-      
+        e.preventDefault();
         deleteArticle(id).then((response)=>
         {
-            console.log(response)
+            
         }).catch((error)=>
         {
             console.log(error)

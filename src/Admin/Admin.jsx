@@ -59,6 +59,9 @@ export default function Admin()
         }).catch((error)=>
         {
             console.log(error);
+        }).finally(()=>
+        {
+            
         })
 
     }

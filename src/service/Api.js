@@ -3,8 +3,8 @@ import { getUserData } from "./Storage";
 
 
 
-axios.defaults.baseURL="https://computerization-of-farming-using-internet.onrender.com";
-// axios.defaults.headers.common["Authorization"]=`Bearer ${getUserData()}`;
+axios.defaults.baseURL="http://localhost:8080";
+
 const REGISTER_URL="/registers/userRegister";
 const LOGIN_URL="/registers/userLogin";
 const PROFILE_URL="/users/userProfile";

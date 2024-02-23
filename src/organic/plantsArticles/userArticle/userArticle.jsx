@@ -14,16 +14,14 @@ export default function UserArticles()
     
     const [texts, setText] = useState("");
     const [errors,setErrors]=useState(null)
-    const handleInputs=(event)=>
+    function handleInputs(event)
     {
-
-        setText(event)
-        
-         
+        event.preventDefault()
+        setText(event)   
     }
    
    
-    const handleOnclick=(event)=>
+    function handleOnclick(event)
     {
         event.preventDefault();
         writeArticle(texts).then((response)=>
