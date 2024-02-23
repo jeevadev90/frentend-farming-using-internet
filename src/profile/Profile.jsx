@@ -30,6 +30,7 @@ export default function Profile()
    
     const handleImage=(event)=>
     {
+        event.preventDefault()
         setPimage(event.target.files[0])
     }
 
