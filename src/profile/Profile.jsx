@@ -34,7 +34,23 @@ export default function Profile()
        
         setPimage(event.target.files[0])
     }
-
+ const handleCliK=async(event)=>
+    {
+        event.preventDefault()
+        putImage(pimage).then((response)=>
+        {
+            console.log(response)
+            // setDetails({
+            //     image:response.data
+            // })
+        }).catch((error)=>
+        {
+            console.log(error)
+        }).finally(()=>
+        {
+            setIsVisible(false)
+        })
+    }
     
 
     useEffect(()=>
@@ -60,23 +76,7 @@ export default function Profile()
         })
 
     },[])    
-    const handleCliK=async(event)=>
-    {
-        event.preventDefault()
-        putImage(pimage).then((response)=>
-        {
-            console.log(response)
-            // setDetails({
-            //     image:response.data
-            // })
-        }).catch((error)=>
-        {
-            console.log(error)
-        }).finally(()=>
-        {
-            setIsVisible(false)
-        })
-    }
+   
 
     function logoutUser()
     {
