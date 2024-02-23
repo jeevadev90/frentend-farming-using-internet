@@ -116,7 +116,7 @@ export default function Profile()
                     {isVisible && (
                         <div className="edit">
                         <input  type="file" onChange={handleImage}  />
-                        <button className="btn btn-success"  type="submit" >Sumbit</button>
+                        <input className="btn btn-success"  type="submit" value="SUBMIT" />
                         </div>
                     )}
                     </form>
