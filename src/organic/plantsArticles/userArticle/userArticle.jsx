@@ -23,7 +23,7 @@ export default function UserArticles()
    
     function handleOnclick(event)
     {
-        event.preventDefault();
+        
         writeArticle(texts).then((response)=>
         {
             
